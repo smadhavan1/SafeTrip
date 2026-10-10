@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SafeTrip</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/auth.css"></head>
+  <body>
+    <main class="auth-page">
+      <a class="brand" href="/"><span class="material-symbols-outlined brand-mark">shield</span><span>Safe<span class="brand-accent">Trip</span></span></a>
+      <section class="auth-card">
+        <p class="eyebrow">SECURE ACCESS</p><h1 id="auth-title">Sign in to SafeTrip</h1>
+        <p class="lede" id="auth-description">Access database-backed crisis information for your journey.</p>
+        <form id="auth-form">
+          <label id="name-field">Full name<input name="fullName" autocomplete="name"></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+          <label>Password<input name="password" type="password" minlength="8" autocomplete="current-password" required></label>
+          <button class="button button-primary full-width" id="auth-submit">Sign in</button>
+        </form>
+        <p class="auth-error" id="auth-error" role="alert"></p>
+        <div class="auth-links"><button class="text-button auth-switch" id="auth-switch" type="button">Create a tourist account</button><button class="guest-button" id="guest-access" type="button">Continue as a guest</button></div>
+      </section>
+    </main>
+    <script type="module" src="/auth.js"></script>
+  </body>
+</html>
