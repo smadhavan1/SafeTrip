@@ -2,6 +2,9 @@
 
 SafeTrip is a database-backed crisis information and assistance website for tourists. It provides verified alerts, hazards, shelters, diplomatic contacts, emergency services, and an assistance request workflow in a responsive web interface.
 
+Deployment : https://safe-trip-ten.vercel.app/  
+Recording Link : https://drive.google.com/file/d/1FfqVYgDcYhFIFiLwDLWbCzxfoarf-4eG/view?usp=sharing
+
 ## Features
 
 ### Tourist dashboard
