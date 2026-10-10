@@ -125,6 +125,7 @@ async function dashboardQueries() {
       source_name, source_url FROM shelters WHERE status = 'OPEN'
       ORDER BY distance_km NULLS LAST, name ASC`),
     pool.query(`SELECT id, country, region, emergency_phone, desk_label,
+      latitude, longitude,
       availability_status, source_url FROM diplomatic_missions
       ORDER BY country ASC`),
     pool.query(`SELECT id, label, phone, service, source_name, source_url

@@ -5,6 +5,9 @@ const { Pool } = pg;
 dotenv.config();
 
 export function createPool() {
+  const ssl = process.env.DB_SSL === "true"
+    ? { rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED !== "false" }
+    : undefined;
   const connectionString = process.env.DATABASE_URL?.trim();
   if (connectionString) {
     let parsed;
@@ -23,7 +26,11 @@ export function createPool() {
       user: parsed.username ? decodeURIComponent(parsed.username) : undefined,
       ...(parsed.password ? { password: decodeURIComponent(parsed.password) } : {})
     };
-    return new Pool(config);
+    const sslMode = parsed.searchParams.get("sslmode");
+    const sslConfig = ssl || sslMode === "require"
+      ? { rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED !== "false" }
+      : undefined;
+    return new Pool({ ...config, ...(sslConfig ? { ssl: sslConfig } : {}) });
   }
 
   const { PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
@@ -35,6 +42,7 @@ export function createPool() {
     port: PGPORT ? Number(PGPORT) : undefined,
     database: PGDATABASE,
     user: PGUSER,
-    ...(PGPASSWORD ? { password: PGPASSWORD } : {})
+    ...(PGPASSWORD ? { password: PGPASSWORD } : {}),
+    ...(ssl ? { ssl } : {})
   });
 }

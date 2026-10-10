@@ -8,6 +8,7 @@ const submit = document.querySelector("#auth-submit");
 const switchButton = document.querySelector("#auth-switch");
 const guestButton = document.querySelector("#guest-access");
 const error = document.querySelector("#auth-error");
+const refreshTranslation = () => document.dispatchEvent(new CustomEvent("safetrip-content-updated"));
 
 function render() {
   nameField.hidden = !signup;
@@ -16,6 +17,7 @@ function render() {
   description.textContent = signup ? "Create an account to access verified crisis records." : "Access database-backed crisis information for your journey.";
   submit.textContent = signup ? "Create account" : "Sign in";
   switchButton.textContent = signup ? "Already have an account? Sign in" : "Create a tourist account";
+  refreshTranslation();
 }
 switchButton.addEventListener("click", () => { signup = !signup; render(); });
 guestButton.addEventListener("click", () => {

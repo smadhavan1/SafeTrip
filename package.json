@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.js",
+    "start": "node db/start.js && node server.js",
     "dev": "node --watch server.js",
-    "db:seed": "node db/seed.js",
+    "db:up": "node db/start.js",
+    "db:seed": "node db/start.js && node db/seed.js",
     "db:create-authority": "node db/create-authority.js"
   },
   "dependencies": {

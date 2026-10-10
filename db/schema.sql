@@ -74,9 +74,15 @@ CREATE TABLE IF NOT EXISTS diplomatic_missions (
   region TEXT NOT NULL,
   emergency_phone TEXT NOT NULL,
   desk_label TEXT,
+  latitude NUMERIC(9,6),
+  longitude NUMERIC(9,6),
   availability_status TEXT NOT NULL DEFAULT 'ACTIVE',
   source_url TEXT
 );
+
+ALTER TABLE diplomatic_missions
+  ADD COLUMN IF NOT EXISTS latitude NUMERIC(9,6),
+  ADD COLUMN IF NOT EXISTS longitude NUMERIC(9,6);
 
 CREATE TABLE IF NOT EXISTS emergency_contacts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
