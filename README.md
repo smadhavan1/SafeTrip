@@ -1,2 +1,2 @@
-# godspeed
+# SafeTrip
 Bits and bytes hackathon submission
